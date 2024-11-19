@@ -1,0 +1,386 @@
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Body Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #333;
+}
+
+/* Header Styling */
+header {
+    width: 100%;
+    padding: 30px 20px;
+    display: flex;
+    border-bottom: 1px solid green;
+    align-items: center;
+    margin-bottom: -40px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    top: 20px;
+    left: 100px;
+    right: 100px;
+    bottom: 20px;
+}
+
+.logo h2 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.96px;
+    padding-left: 100px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    padding-right: 200px;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li:nth-child(1) a {
+    color: #4B971C;
+}
+
+/* Image Container Styling */
+.image-container {
+    width: 50%;  
+    padding-right: 200px;  
+    margin-top: -150px;
+}
+
+.image-container img {
+    width: 756px;
+    height: 922px;
+}
+
+/* Container Styling */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1600px;
+    gap: 0;
+    margin: 40px auto;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #f4f4f480;
+}
+
+/* Form Container Styling */
+.form-container {
+    margin-top: 50px;
+    width: 454px;
+    padding: 40px;
+    gap: 32px;
+    height: 750px;
+    border-radius: 50px;
+    background-color: white;
+    margin-left: 150px;
+}
+
+.form-container h1 {
+    font-size: 45px;
+    line-height: 52px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #28332F;
+}
+
+.form-container p {
+    color: #5d5f60;
+    margin-bottom: 20px;
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.form-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Fields Styling */
+.form-container label {
+    font-size: 0.9em;
+    color: black;
+    margin-bottom: 5px;
+    font-style: bold;
+    font-family: sans-serif;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 100%;
+    padding: 16px;
+    padding-right: 35px; /* Space for the icon on the right */
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    gap: 12px;
+}
+
+/* Phone Input Styling */
+.phone-input {
+    display: flex;
+    align-items: center;
+    border: 1px solid #E8EAED;
+    border-radius: 8px;
+    max-width: 400px;
+}
+
+.flag-container {
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-right: none;
+    padding: 8px 8px 8px 12px;
+    background-color: #E8EAED;
+    gap: 8px;
+    height: 50px;
+}
+
+.flag-container img {
+    width: 24px;
+    height: 16px;
+}
+
+#country-code {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    appearance: none;
+    padding-right: 10px; /* Space for dropdown arrow */
+}
+
+/* Hide default select dropdown arrow */
+#country-code::-ms-expand {
+    display: none;
+}
+
+#country-code {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Custom dropdown arrow */
+.flag-container::after {
+    content: "▼";
+    font-size: 12px;
+    color: #666;
+    margin-left: 2px;
+}
+
+#country-code-static {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    margin: 10px;
+}
+
+#phone {
+    border: none;
+    padding: 8px;
+    font-size: 16px;
+    flex-grow: 1;
+    color: #888;
+}
+
+#phone::placeholder {
+    color: #888;
+}
+
+#phone:focus {
+    outline: none;
+}
+
+.tel {
+    padding-top: 30px;
+}
+
+/* Placeholder Styling */
+.form-container input::placeholder {
+    color: #889393;
+}
+
+/* Icon Styling Inside Inputs */
+.form-container .input-with-icon {
+    position: relative;
+}
+
+.form-container .input-with-icon i {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    gap: 4px;
+    padding-bottom: 12px;
+    transform: translateY(-50%);
+    color: #889393;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* Button Styling */
+.next-button {
+    padding: 12px;
+    background-color: #4B971C;
+    top: 16px;
+    right: 24px;
+    bottom: 16px;
+    left: 24px;
+    color: white;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    gap:10px;
+    transition: background-color 0.3s ease;
+}
+
+.next-button:hover {
+    background-color: #45a049;
+}
+
+.login-link {
+    padding-top: 50px;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9em;
+    border:1px solid #E8EAED;
+    border-radius: 30px;
+    gap: 6px;
+    padding: 16px 28px 16px 28px;
+}
+
+.login-link a {
+    color: #4B971C;
+    text-decoration: none;
+}
+
+/* ----- Mobile (Responsive) Styles ----- */
+
+/* Mobile View */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    header {
+        padding: 20px 15px; /* Reduce padding for small screens */
+    }
+
+    .header-container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center content */
+        padding: 0; /* Remove extra padding */
+    }
+
+    .logo h2 {
+        font-size: 10px; /* Increase logo size for readability on smaller screens */
+        padding-left: 0; /* Remove padding */
+        text-align: center; /* Center align the logo */
+        margin-bottom: 10px; /* Add space below the logo */
+    }
+
+    /* Navigation adjustments */
+    nav ul {
+        flex-direction: row; /* Stack nav items vertically */
+        padding-right: 0; /* Remove right padding */
+        gap: 8px; /* Adjust spacing between nav items */
+        align-items: center; /* Center the nav items */
+        margin-top: 20px; /* Add space between logo and navigation */
+    }
+
+    nav ul li a {
+        font-size: 10px; /* Slightly reduce font size for mobile */
+        padding: 3px 0; /* Add padding for better touch targets */
+    }
+
+    /* Style adjustments for the first nav item */
+    nav ul li:nth-child(1) a {
+        color: #4B971C;
+    }
+}
+/* Mobile View */
+@media (max-width: 768px) {
+
+    /* Image Container */
+    .image-container {
+        width: 100%;
+        height: auto;
+        margin-left: -20px;
+        margin-top: -10px;
+        
+    }
+
+    .image-container img {
+        width: 100%;
+        height: auto;
+        max-width: none;
+    }
+
+    /* Form Container */
+    .container {
+        flex-direction: column; /* Stack elements vertically */
+        padding: 0 20px; /* Ensure there's no extra margin or padding */
+    }
+
+    .form-container {
+        width: 100%;
+        padding: 20px; /* Add some padding back for mobile */
+        margin-left: 0; /* Remove the left margin */
+        margin-right: 0;
+        height: auto; /* Ensure the height adjusts based on content */
+        max-width: 500px; /* Limit the max-width for better readability */
+    }
+
+    .form-container h1 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .form-container p {
+        font-size: 16px;
+        text-align: center;
+    }
+
+    .form-container label {
+        font-size: 0.8em;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="email"],
+    .form-container input[type="password"] {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .next-button {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .login-link {
+        font-size: 14px;
+        padding: 10px 5px;
+    }
+}

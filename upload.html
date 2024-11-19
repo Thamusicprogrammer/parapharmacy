@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCommande Upload Interface</title>
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/inter/3.19.3/inter.css" rel="stylesheet"> -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: #fff;
+        }
+
+        header {
+    width: 100%;
+    padding: 30px 20px;
+    display: flex;
+    border-bottom: 1px solid green;
+    align-items: center;
+    margin-bottom: -40px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    top: 20px;
+    left: 100px;
+    right: 100px;
+    bottom: 20px;
+}
+
+.logo h2 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16.96px;
+    padding-left: 100px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    padding-right: 200px;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li:nth-child(2) a {
+    color: #4B971C;
+}
+        
+
+        .container {
+            display: flex;
+            width: 100%;
+            min-height: calc(100vh - 60px);
+            /* flex-direction: row; */
+            max-width: 1600px;
+            margin-top: 26px;
+        }
+
+        .image-container img {
+            width: 756px;
+            height: 922px;
+        }
+
+        
+        .form-section {
+            width: 544px;
+            max-width: 550px;
+            padding: 32px 48px;
+            margin: 0 auto;
+            overflow-y: auto;
+            background-color: #fff;
+            border-radius: 24px;
+            margin-top: 50px;
+            
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #64748b;
+            text-decoration: none;
+            margin-bottom: 32px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .form-card {
+            background: white;
+            padding: 40px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            top: 189px;
+            left: 878px;
+        }
+
+        .form-card h2 {
+            font-size: 28px;
+            margin-bottom: 12px;
+            color: #28332F;
+            font-weight: 600;
+            text-align: center;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+
+        .form-card p {
+            color: #5D5F60;
+            margin-bottom: 32px;
+            font-size: 16px;
+            font-weight: 500;
+            text-align: center;
+            font-family: 'Instrument Sans', sans-serif;
+        }
+
+        .upload-area {
+            border: 1px dashed #22c55e;
+            border-radius: 12px;
+            padding: 32px 24px;
+            background: #f8fafc;
+        }
+
+        .upload-box {
+            text-align: center;
+            cursor: pointer;
+            padding: 20px 0;
+        }
+
+        .upload-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 16px;
+            color: #22c55e;
+            padding: 12px;
+            border-radius: 50%;
+            background: #f0fdf4;
+        }
+
+        .upload-text {
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .upload-f {
+            color: #22c55e;
+
+        }
+
+        .upload-subtext {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+        }
+
+        /* Success State Styles */
+        .upload-success {
+            display: none;
+            padding: 24px;
+            text-align: center;
+        }
+
+        .success-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .success-checkmark {
+            width: 24px;
+            height: 24px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4px;
+        }
+
+        .success-checkmark svg {
+            width: 14px;
+            height: 14px;
+            color: white;
+        }
+
+        .success-text {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #22c55e;
+            font-weight: 500;
+        }
+
+        .success-text:before {
+            content: '+';
+        }
+
+        .success-subtext {
+            color: #64748b;
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        .clear-upload {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #64748b;
+            background: none;
+            border: none;
+            padding: 8px;
+            margin-top: 16px;
+            cursor: pointer;
+            font-size: 0.875rem;
+        }
+
+        .clear-upload svg {
+            width: 16px;
+            height: 16px;
+            color: #64748b;
+        }
+
+        .divider {
+            text-align: center;
+            color: #64748b;
+            margin: 16px 0;
+            font-size: 0.875rem;
+            position: relative;
+        }
+
+        .browse-btn {
+            width: 40%;
+            padding: 12px;
+            background: #4B971C;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 0 auto;
+            display: block;
+            transition: background 0.2s ease;
+        }
+
+        .browse-btn:hover {
+            background: #16a34a;
+        }
+
+        .create-account-btn {
+            width: 100%;
+            padding: 12px;
+            background: #B1BCBC;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 24px 0;
+            transition: background 0.2s ease;
+        }
+
+        .create-account-btn.success {
+            background: #22c55e;
+            /* Same green color as the Browse button */
+            color: white;
+        }
+
+        .login-link {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .login-link a {
+            color: #22c55e;
+            text-decoration: none;
+            margin-left: 4px;
+            font-weight: 500;
+        }
+
+        #fileInput {
+            display: none;
+        }
+
+        @media (max-width: 1200px) {
+    .container {
+       flex-direction: row;
+    }
+
+    .image-section {
+        width: 100%;
+        min-height: 400px;
+        padding: 0px;
+    }
+    .image-section img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .image-section h1 {
+        font-size: 2.5rem;
+        max-width: 100%;
+    }
+
+    .image-section p {
+        max-width: 100%;
+    }
+
+    .form-section {
+        width: 100%;
+        max-width: 600px;
+        padding: 24px;
+    }
+}
+
+/* ----- Mobile (Responsive) Styles ----- */
+
+/* Mobile View */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    header {
+        padding: 20px 15px; /* Reduce padding for small screens */
+    }
+
+    .header-container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center content */
+        padding: 0; /* Remove extra padding */
+    }
+
+    .logo h2 {
+        font-size: 10px; /* Increase logo size for readability on smaller screens */
+        padding-left: 0; /* Remove padding */
+        text-align: center; /* Center align the logo */
+        margin-bottom: 10px; /* Add space below the logo */
+    }
+
+    /* Navigation adjustments */
+    nav ul {
+        flex-direction: row; /* Stack nav items vertically */
+        padding-right: 0; /* Remove right padding */
+        gap: 8px; /* Adjust spacing between nav items */
+        align-items: center; /* Center the nav items */
+        margin-top: 20px; /* Add space between logo and navigation */
+    }
+
+    nav ul li a {
+        font-size: 10px; /* Slightly reduce font size for mobile */
+        padding: 3px 0; /* Add padding for better touch targets */
+    }
+
+    /* Style adjustments for the first nav item */
+    nav ul li:nth-child(1) a {
+        color: #4B971C;
+    }
+    
+}
+@media (max-width: 768px) {
+    .image-container {
+        width: 100%;
+        padding-right: 0;
+        margin-top: 33px;
+        
+    }
+
+    .image-container img {
+        width: 100%;
+        height: auto;
+        max-width: none;
+    }
+
+    /* Form Container */
+    .container {
+        flex-direction: column;
+        margin: 0px;
+    }
+
+    /* .image-section h1 {
+        font-size: 2rem;
+    } */
+
+    .form-section {
+        padding: 20px;
+    }
+    .browse-btn {
+            width: 60%;
+        }
+        .upload-text {
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 13px;
+            display: flex;
+
+
+            gap: px;
+        }
+        .upload-f {
+            color: #22c55e;
+
+        }
+
+        .upload-subtext {
+            color: #64748b;
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+}
+
+@media (max-width: 480px) {
+    .image-section {
+                min-height: 200px;
+                width: fit-content;
+            }
+
+            .image-section img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+
+    .form-section {
+        padding: 16px;
+    }
+    
+}
+    </style>
+</head>
+
+<body>
+    
+    <header>
+        <div class="header-container">
+          <div class="logo">
+          <h2>MyCommandè</h2>
+          </div>
+          <nav>
+            <ul>
+                <li><a href="#">Create your account <i class="fa-solid fa-chevron-right"></i></a></li>
+                <li><a href="#" >Upload Veirification <i class="fa-solid fa-chevron-right"></i></a></li>
+                <li><a href="#">Complete account <i class="fa-solid fa-chevron-right"></i></a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+    <div class="container">
+        <div class="image-container">
+            <img src="./img/Frame 1618867847.png" alt="Pharmacist image">
+        </div>
+        <br>
+        <div class="form-section">
+            <a href="index.html" class="back-button">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Back
+            </a>
+
+            <div class="form-card">
+                <h2>Get Started</h2>
+                <p>Upload your government verified identification</p>
+
+                <input type="file" id="fileInput" accept=".jpg,.png,.pdf,.svg">
+                <div class="upload-area">
+                    <!-- Initial Upload State -->
+                    <label for="fileInput" class="upload-box" id="uploadBox">
+                        <div class="upload-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12" />
+                            </svg>
+                        </div>
+                        <div class="upload-text"><span class="upload-f">+ Click to upload </span>or drag and drop</div>
+                        <div class="upload-subtext">SVG, PNG, JPG or PDF (MAX. 800x400px)</div>
+                    </label>
+
+                    <!-- Success State -->
+                    <div class="upload-success" id="uploadSuccess">
+                        <div class="success-container">
+                            <div class="success-checkmark">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="success-text">Upload Successful!</div>
+                                <div class="success-subtext">Listing avril 2024</div>
+                            </div>
+                            <button class="clear-upload">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3-3h6m-6 0H6m6 0h6M6 6h12" />
+                                </svg>
+                                Clear Upload
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="divider">OR</div>
+                    <button class="browse-btn">Browse files</button>
+                </div>
+
+                <button class="create-account-btn">Create an account</button>
+
+                <div class="login-link">
+                    Already have an account? <a href="login.html"> Log In +</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginLink = document.querySelector('.login-link a');
+        const backButton = document.querySelector('.back-button');
+
+        loginLink.href = 'login.html';
+        backButton.href = 'index.html';
+        const uploadBox = document.getElementById('uploadBox');
+        const uploadSuccess = document.getElementById('uploadSuccess');
+        const uploadArea = document.querySelector('.upload-area');
+        const fileInput = document.getElementById('fileInput');
+        const browseBtn = document.querySelector('.browse-btn');
+        const createAccountBtn = document.querySelector('.create-account-btn');
+        const clearUploadBtn = document.querySelector('.clear-upload');
+    
+        function showSuccessState() {
+            uploadBox.style.display = 'none';
+            uploadSuccess.style.display = 'block';
+            uploadArea.style.background = 'white';
+            browseBtn.style.display = 'none'; // Hide browse button
+            createAccountBtn.style.display = 'block'; // Show create account button
+            createAccountBtn.classList.add('success'); // Add success style to create account button
+
+        }
+    
+        function resetUploadState() {
+            uploadBox.style.display = 'block';
+            uploadSuccess.style.display = 'none';
+            uploadArea.style.background = '#f8fafc';
+            uploadArea.style.borderColor = '#e2e8f0';
+            fileInput.value = '';
+            browseBtn.style.display = 'block'; // Show browse button
+            createAccountBtn.style.display = 'none'; // Hide create account button
+        }
+    
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            if (uploadBox.style.display !== 'none') {
+                uploadArea.style.borderColor = '#22c55e';
+                uploadArea.style.background = '#f0fdf4';
+            }
+        });
+    
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            if (uploadBox.style.display !== 'none') {
+                uploadArea.style.borderColor = '#e2e8f0';
+                uploadArea.style.background = '#f8fafc';
+            }
+        });
+    
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+    
+        browseBtn.addEventListener('click', () => {
+            fileInput.click();
+        });
+    
+        fileInput.addEventListener('change', (e) => {
+            handleFiles(e.target.files);
+        });
+    
+        clearUploadBtn.addEventListener('click', resetUploadState);
+    
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                const validTypes = ['image/jpeg', 'image/png', 'application/pdf', 'image/svg+xml'];
+    
+                if (validTypes.includes(file.type)) {
+                    showSuccessState();
+                } else {
+                    alert('Please select a valid file type (SVG, PNG, JPG or PDF)');
+                }
+            }
+        }
+    </script>
+    
+</body>
+
+</html>
