@@ -323,19 +323,22 @@ nav ul li:nth-child(1) a {
 /* Mobile View */
 @media (max-width: 768px) {
 
+    
     /* Image Container */
     .image-container {
-        width: 100%;
+        width: 400px;
         height: auto;
-        margin-left: -20px;
+        margin: 0 auto; /* center horizontally */
+        padding: 0px; /* add some padding */
+        /* box-sizing: border-box;  */
         margin-top: -10px;
-        
+        margin-left: -20px;
     }
 
     .image-container img {
         width: 100%;
         height: auto;
-        max-width: 765px;
+        max-width: 100%;
     }
 
     /* Form Container */
